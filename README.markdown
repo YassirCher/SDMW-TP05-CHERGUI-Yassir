@@ -152,7 +152,8 @@ Voici quelques captures d'écran de l'application :
 * si il entre des infos errones :
 
 ![image](https://github.com/user-attachments/assets/e6786e1f-5463-46f1-be05-b7db97f3fa85)
-sinon il se connecte
+
+* sinon il se connecte
 
 ### Page d'accueil (Liste des produits)
 * pour l'admin :
