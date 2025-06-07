@@ -147,20 +147,52 @@ msdia-yassir-spring-mvc/
 ## Screenshots
 
 Voici quelques captures d'écran de l'application :
+### connexion http://localhost:8086/ :
+ #### utilisateurs user1/admin  --- pwd : 1234
+-- si il entre des infos errones :
+![image](https://github.com/user-attachments/assets/e6786e1f-5463-46f1-be05-b7db97f3fa85)
+sinon il se connecte
 
 ### Page d'accueil (Liste des produits)
+--- pour l'admin :
+![image](https://github.com/user-attachments/assets/bea79181-21db-42d6-9f70-b9a1e42ae910)
 
-![Liste des produits](screenshots/products_list.png)### Formulaire d'ajout de produit
+-- Ajout d'un produit :
+ ![image](https://github.com/user-attachments/assets/a9ef37ec-7fa6-4c76-b074-a231c70f378d)
+ ceci contient aussi la verification de chaque champ pour qu'il soit conforme
+ ![image](https://github.com/user-attachments/assets/02a03d31-f795-4c9d-8007-68e48f60147a)
 
-![Ajouter un produit](screenshots/add_product.png)### Page de recherche
+-- modification d'un produit :
+![image](https://github.com/user-attachments/assets/7541cbdf-568e-47f6-befe-7b670b89b0eb)
+![image](https://github.com/user-attachments/assets/277e2c16-14a5-4d84-9529-f4ecee6fbe6c)
+![image](https://github.com/user-attachments/assets/c7918c15-d5ca-4afb-ba84-c454201784f5)
 
-![Recherche de produits](screenshots/search_products.png)### Page d'erreur
+-- supression d'un produit:
+![image](https://github.com/user-attachments/assets/f9ea9ae8-1395-41a9-88be-c4eed198ea5d)
+![image](https://github.com/user-attachments/assets/52aac9fd-46dc-4dc9-a907-78a527f27a5c)
 
-![Page d'erreur](screenshots/error_page.png)### Page de connexion
+ -- deconnexion :
+ ![image](https://github.com/user-attachments/assets/c3b8a989-47b1-4196-ba0e-27866064fbbc)
+ ![image](https://github.com/user-attachments/assets/59bdecde-fed8-427e-8a42-58d8de7df810)
+ 
+ -- connexion tant q'utilisateur simple:
+![image](https://github.com/user-attachments/assets/39ad046e-3cc9-464b-a08b-8b89e39a3395)
 
-![Connexion](screenshots/login_page.png)> **Note** : Remplacez les chemins des images ci-dessus par les chemins réels de vos captures d'écran dans le dossier `screenshots/` de votre dépôt GitHub.
+-- si l'utilisateur essaye de faire une fonctionalite qu'il na pas le droit a faire :
+link : http://localhost:8086/admin/editProduct?id=5&keyword=mouse&page=0
+![image](https://github.com/user-attachments/assets/4bbb4403-22d5-4313-a42e-1e2a99fa6cea)
 
----
+-- si l'utilisateur entre a un lien errone:
+![image](https://github.com/user-attachments/assets/30c7a839-34cd-40ba-9963-1251c688aca9)
+
+
+
+
+
+
+
+
+
 
 ## Explication des Annotations
 
