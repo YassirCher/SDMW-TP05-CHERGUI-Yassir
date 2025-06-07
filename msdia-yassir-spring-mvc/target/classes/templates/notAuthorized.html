@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout1">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        danger: {
+                            50: '#fef2f2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-opacity {
+            animation: pulse-opacity 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="min-h-screen flex items-center justify-center p-4" layout:fragment="content1">
+    <div class="w-full max-w-md">
+        <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+            <!-- Icon Container -->
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-red-50 mb-6 animate-pulse-opacity">
+                <i class="fas fa-lock text-red-500 text-3xl"></i>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Access Denied</h1>
+
+            <!-- Message -->
+            <p class="text-gray-600 mb-6">
+                You don't have permission to access this resource.
+                Please contact your administrator if you believe this is an error.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 justify-center">
+                <a th:href="@{/}"
+                   class="px-5 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                    <i class="fas fa-home mr-2"></i> Return Home
+                </a>
+
+                <a th:if="${!#strings.isEmpty(loginPage)}" th:href="@{${loginPage}}"
+                   class="px-5 py-2.5 rounded-lg border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Sign In
+                </a>
+            </div>
+
+            <!-- Optional help link -->
+            <div class="mt-6 text-sm">
+                <a href="#" class="text-primary-600 hover:text-primary-800 hover:underline">
+                    Need help? Contact support
+                </a>
+            </div>
+        </div>
+
+        <!-- Branding/Footer (optional) -->
+        <div class="mt-8 text-center text-gray-400 text-xs">
+            &copy; 2025 CHERGUI Store. All rights reserved.
+        </div>
+    </div>
+</div>
+</body>
+</html>
