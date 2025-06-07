@@ -149,40 +149,51 @@ msdia-yassir-spring-mvc/
 Voici quelques captures d'écran de l'application :
 ### connexion http://localhost:8086/ :
  #### utilisateurs user1/admin  --- pwd : 1234
--- si il entre des infos errones :
+* si il entre des infos errones :
+
 ![image](https://github.com/user-attachments/assets/e6786e1f-5463-46f1-be05-b7db97f3fa85)
 sinon il se connecte
 
 ### Page d'accueil (Liste des produits)
---- pour l'admin :
+* pour l'admin :
+
 ![image](https://github.com/user-attachments/assets/bea79181-21db-42d6-9f70-b9a1e42ae910)
 
--- Ajout d'un produit :
+* Ajout d'un produit :
+  
  ![image](https://github.com/user-attachments/assets/a9ef37ec-7fa6-4c76-b074-a231c70f378d)
  ceci contient aussi la verification de chaque champ pour qu'il soit conforme
+ 
  ![image](https://github.com/user-attachments/assets/02a03d31-f795-4c9d-8007-68e48f60147a)
 
--- modification d'un produit :
+* modification d'un produit :
+  
 ![image](https://github.com/user-attachments/assets/7541cbdf-568e-47f6-befe-7b670b89b0eb)
 ![image](https://github.com/user-attachments/assets/277e2c16-14a5-4d84-9529-f4ecee6fbe6c)
 ![image](https://github.com/user-attachments/assets/c7918c15-d5ca-4afb-ba84-c454201784f5)
 
--- supression d'un produit:
+* supression d'un produit:
+  
 ![image](https://github.com/user-attachments/assets/f9ea9ae8-1395-41a9-88be-c4eed198ea5d)
 ![image](https://github.com/user-attachments/assets/52aac9fd-46dc-4dc9-a907-78a527f27a5c)
 
- -- deconnexion :
+* deconnexion :
+  
  ![image](https://github.com/user-attachments/assets/c3b8a989-47b1-4196-ba0e-27866064fbbc)
  ![image](https://github.com/user-attachments/assets/59bdecde-fed8-427e-8a42-58d8de7df810)
  
- -- connexion tant q'utilisateur simple:
+* connexion tant q'utilisateur simple:
+  
 ![image](https://github.com/user-attachments/assets/39ad046e-3cc9-464b-a08b-8b89e39a3395)
 
--- si l'utilisateur essaye de faire une fonctionalite qu'il na pas le droit a faire :
-link : http://localhost:8086/admin/editProduct?id=5&keyword=mouse&page=0
+* si l'utilisateur essaye de faire une fonctionalite qu'il na pas le droit a faire :
+  
+- link : http://localhost:8086/admin/editProduct?id=5&keyword=mouse&page=0
+
 ![image](https://github.com/user-attachments/assets/4bbb4403-22d5-4313-a42e-1e2a99fa6cea)
 
--- si l'utilisateur entre a un lien errone:
+* si l'utilisateur entre a un lien errone:
+  
 ![image](https://github.com/user-attachments/assets/30c7a839-34cd-40ba-9963-1251c688aca9)
 
 
@@ -204,7 +215,27 @@ Les annotations Spring et Lombok simplifient le développement. Voici les princi
 
   ```java
   @Entity
-  public class Product { ... }
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@Builder
+public class Product {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @NotEmpty
+    @Size(min = 3, max = 50)
+    private String name;
+
+    @Min(8)
+    private double price;
+
+    @Max(100)
+    private double quantity;
+}
   ```
 - `@Id` : Indique la clé primaire.
 
@@ -226,7 +257,14 @@ Les annotations Spring et Lombok simplifient le développement. Voici les princi
 
   ```java
   @Repository
-  public interface ProductRepository extends JpaRepository<Product, Long> { ... }
+  public interface ProductRepository extends JpaRepository<Product,Long> {
+
+    Page<Product> findByNameContains(String keyword, Pageable pageable);
+    @Query("select p from Product p where p.name like :x")
+    Page<Product> chercher(@Param("x") String keyword, Pageable pageable);
+
+}
+
   ```
 
 ### Annotations Spring MVC
@@ -345,14 +383,11 @@ Les contributions sont les bienvenues ! Suivez ces étapes :
 4. Pousser la branche : `git push origin feature/nouvelle-fonctionnalite`.
 5. Ouvrir une Pull Request.
 
----
-
-## Licence
-
-Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de détails.
 
 ---
+## Conclusion :
+Ce projet de gestion de produits est une application web robuste et bien structurée, développée avec Spring Boot et intégrant des technologies modernes comme Thymeleaf, Spring Security, Tailwind CSS et Bootstrap. Il offre une interface sécurisée, intuitive et fonctionnelle permettant aux utilisateurs d’ajouter, modifier, rechercher ou supprimer des produits selon leurs rôles (ADMIN/USER). Grâce à une architecture claire, une validation des données efficace, une gestion des erreurs soignée et une interface responsive, ce projet constitue une excellente base pour une application professionnelle ou académique
 
 ## Contact
 
-Pour toute question, contactez-moi via \[ton email ou pseudo GitHub\].
+Pour toute question, contactez-moi .
